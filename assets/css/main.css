@@ -6,7 +6,6 @@ body {
 }
 .content {
     width: 350px;
-    height: 400px;
     margin: auto;
     margin-top: 15vh;
     background-color: #e1e7f5;
@@ -69,4 +68,9 @@ button {
     font-weight: bold;
     background: #48a7cb;
     color: white;
+}
+
+p a {
+    text-decoration: none;
+    color: rgb(65, 65, 169);
 }
