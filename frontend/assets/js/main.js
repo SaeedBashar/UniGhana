@@ -18,17 +18,24 @@ function authenticateUser(userObj, endpoint) {
         },
         body: JSON.stringify(userObj),
     })
-    .then(response => response.json())
+    .then(response =>response.json())
     .then((responseObj) => {
-    if (responseObj.status === true) {
-        const { data } = responseObj;
-        sessionStorage.setItem('fullname', `${data.firstname} ${data.lastname}`);
-        sessionStorage.setItem('email', data.email);
-    
-        displayProgress(element, 'Request Success');
-    } else {
-        displayProgress(element, 'Request Failed!');
-    }
+        console.log(responseObj)
+        let el = document.getElementById('modal');
+        el.style.opacity = "1";
+        el.style.top = "200px";
+        document.getElementById("res-content").innerText = responseObj.msg;
+
+        if (responseObj.status === true) {
+            const { data } = responseObj;
+            sessionStorage.setItem('fullname', `${data.firstname} ${data.lastname}`);
+            sessionStorage.setItem('email', data.email);
+            console.log(responseObj)
+
+            displayProgress(element, 'Request Success');
+        } else {
+            displayProgress(element, 'Request Failed!');
+        }
     })
     .catch((error) => {
         displayProgress(element, defaultText);
@@ -38,7 +45,7 @@ function authenticateUser(userObj, endpoint) {
 
 document.getElementById('form').addEventListener('submit', (evt) => {
     evt.preventDefault();
-  
+    
     let endpoint = 'login';
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
