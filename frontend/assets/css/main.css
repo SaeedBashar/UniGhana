@@ -89,7 +89,3 @@ p a {
     text-align: center;
     background: linear-gradient(45deg, #90a7bf, #4e87b5);
 }
-
-.modal:hover {
-    opacity: 1;
-}
